@@ -1,0 +1,7 @@
+
+metric_name,description,source_table,calculation,unit
+employee_count,Number of unique employees,employees,Count distinct employee_id,employees
+average_salary,Average valid salary amount,salaries,Mean of salary,currency
+attendance_rate,Share of expected working days attended,attendance,Present days divided by expected working days,percentage
+leave_days,Total approved leave days,leave,Sum of approved leave duration,days
+net_payroll,Total employee net pay,payroll,Sum of net_pay,currency
