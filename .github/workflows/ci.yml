@@ -68,12 +68,14 @@ jobs:
       - name: Verify strict mode fails with explicit reject report
         shell: bash
         run: |
+          mkdir -p data/ci-strict-raw
+          cp tests/fixtures/etl_strict/*.csv data/ci-strict-raw/
           set +e
           docker run --rm \
-            --env RAW_DIR=data/raw \
-            --env CLEAN_DIR=data/clean \
-            --env REJECTED_DIR=data/rejected \
-            --env LOG_DIR=logs \
+            --env RAW_DIR=data/ci-strict-raw \
+            --env CLEAN_DIR=data/ci-strict-clean \
+            --env REJECTED_DIR=data/ci-strict-rejected \
+            --env LOG_DIR=logs/ci-strict \
             --env ETL_AS_OF_DATE=2026-10-12 \
             --env FAIL_ON_REJECTS=true \
             --volume "${{ github.workspace }}/data:/app/data" \
@@ -82,8 +84,9 @@ jobs:
           run_status=$?
           set -e
           test "$run_status" -ne 0
-          latest_report=$(ls -t logs/run_*.json | head -n1)
-          jq -e '.status == "failed_due_to_rejections" and .total_rows_rejected == 2' "$latest_report"
+          latest_report=$(ls -t logs/ci-strict/run_*.json | head -n1)
+          jq -e '.status == "failed_due_to_rejections" and .total_rows_rejected == 1' "$latest_report"
+          test -s data/ci-strict-rejected/salaries_rejected.csv
 
       - name: Start PostgreSQL warehouse
         run: docker compose up -d warehouse-db
@@ -92,9 +95,7 @@ jobs:
         run: docker compose run --rm warehouse-load
 
       - name: Verify uploaded workbook sheet counts
-        env:
-          DATABASE_URL: postgresql://pulseiq:pulseiq_local_dev@localhost:5433/pulseiq_warehouse
-        run: python scripts/verify_workbook_counts.py
+        run: docker compose run --rm warehouse-load python scripts/verify_workbook_counts.py
 
       - name: Run warehouse integration checks
         env:
