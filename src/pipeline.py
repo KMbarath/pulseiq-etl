@@ -215,9 +215,10 @@ def transform(
     for col in cfg["numbers"]:
         add_reason(df[col].lt(0), f"negative_{col}")
 
-    # Dates cannot be in the future relative to the fixed as-of date.
+    # Future event dates are rejected except leave dates: approved leave can
+    # be planned beyond the data cutoff and is valid source information.
     for col in cfg["dates"]:
-        if col in df.columns:
+        if col in df.columns and table != "leave":
             add_reason(df[col].gt(AS_OF_DATE), f"future_{col}")
 
     # Employee joining date must not be after leaving date.

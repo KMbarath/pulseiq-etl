@@ -57,6 +57,29 @@ class PipelineQualityTests(unittest.TestCase):
         _, rejected, _ = transform("salaries", raw)
         self.assertIn("future_effective_date", rejected.iloc[0]["_rejection_reason"])
 
+    def test_approved_future_leave_is_retained_as_planned_leave(self):
+        raw = pd.DataFrame({
+            "employee_id": ["E1"],
+            "start_date": [(AS_OF_DATE + pd.Timedelta(days=10)).strftime("%Y-%m-%d")],
+            "end_date": [(AS_OF_DATE + pd.Timedelta(days=20)).strftime("%Y-%m-%d")],
+            "status": ["Approved"],
+        })
+        clean, rejected, _ = transform("leave", raw)
+        self.assertEqual(len(clean), 1)
+        self.assertEqual(len(rejected), 0)
+
+    def test_reversed_leave_dates_are_quarantined(self):
+        raw = pd.DataFrame({
+            "employee_id": ["E1"],
+            "start_date": ["2026-02-20"],
+            "end_date": ["2026-02-19"],
+            "status": ["Approved"],
+        })
+        clean, rejected, _ = transform("leave", raw)
+        self.assertEqual(len(clean), 0)
+        self.assertEqual(len(rejected), 1)
+        self.assertIn("leave_start_after_end", rejected.iloc[0]["_rejection_reason"])
+
 
 if __name__ == "__main__":
     unittest.main()

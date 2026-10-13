@@ -1,0 +1,527 @@
+{
+  "dashboard_title": "Headcount & Departments",
+  "slug": "pulseiq-headcount-departments",
+  "dashboard_id": 1,
+  "summary": "Current workforce, month-end trend, department and role mix, and employee movement.",
+  "charts": [
+    {
+      "id": 11,
+      "title": "Current headcount",
+      "dataset": "v_headcount_snapshot",
+      "viz_type": "big_number_total",
+      "takeaway": "The September 2026 workbook snapshot has 441 active employees.",
+      "rows_returned": 1,
+      "query_status": "success"
+    },
+    {
+      "id": 12,
+      "title": "Active departments",
+      "dataset": "v_headcount_snapshot",
+      "viz_type": "big_number_total",
+      "takeaway": "All 11 departments have non-zero headcount in September 2026.",
+      "rows_returned": 1,
+      "query_status": "success"
+    },
+    {
+      "id": 13,
+      "title": "Average tenure",
+      "dataset": "v_headcount_snapshot",
+      "viz_type": "big_number_total",
+      "takeaway": "Average tenure is 3.3 years for active employees at the 2026-09-30 cutoff.",
+      "rows_returned": 1,
+      "query_status": "success"
+    },
+    {
+      "id": 14,
+      "title": "Joiners (latest month)",
+      "dataset": "v_headcount_snapshot",
+      "viz_type": "big_number_total",
+      "takeaway": "September 2026 recorded 17 hires; the source reports 3 exits.",
+      "rows_returned": 1,
+      "query_status": "success"
+    },
+    {
+      "id": 2,
+      "title": "Headcount trend",
+      "dataset": "v_headcount_monthly",
+      "viz_type": "echarts_timeseries_line",
+      "takeaway": "Headcount grew from 407 in April 2026 to 441 in September (+34).",
+      "rows_returned": 81,
+      "query_status": "success"
+    },
+    {
+      "id": 3,
+      "title": "Headcount by department",
+      "dataset": "v_headcount_latest_department",
+      "viz_type": "echarts_timeseries_bar",
+      "takeaway": "Engineering is largest (167); Customer Support has 59 and Data & AI 52.",
+      "rows_returned": 11,
+      "query_status": "success"
+    },
+    {
+      "id": 4,
+      "title": "Role mix",
+      "dataset": "v_role_mix",
+      "viz_type": "pie",
+      "takeaway": "Software Engineer and QA Engineer are tied at 29 active employees each.",
+      "rows_returned": 57,
+      "query_status": "success"
+    },
+    {
+      "id": 5,
+      "title": "Joiners and leavers",
+      "dataset": "v_joiners_leavers_monthly",
+      "viz_type": "echarts_timeseries_bar",
+      "takeaway": "September 2026 had 17 hires and 3 exits; transfers are excluded from hires.",
+      "rows_returned": 81,
+      "query_status": "success"
+    },
+    {
+      "id": 6,
+      "title": "Headcount by department over time",
+      "dataset": "v_headcount_department_monthly",
+      "viz_type": "table",
+      "takeaway": "Compare monthly department counts; the latest snapshot totals 441 active employees.",
+      "rows_returned": 891,
+      "query_status": "success"
+    },
+    {
+      "id": 15,
+      "title": "Tenure bands",
+      "dataset": "v_tenure_bands",
+      "viz_type": "table",
+      "takeaway": "The largest active tenure band is 1-2 years (123 of 441 employees).",
+      "rows_returned": 4,
+      "query_status": "success"
+    }
+  ],
+  "filters": [
+    "department",
+    "date range"
+  ],
+  "superset_definition": {
+    "dashboard": {
+      "certification_details": null,
+      "certified_by": null,
+      "changed_by": {
+        "first_name": "PulseIQ",
+        "id": 1,
+        "last_name": "Admin"
+      },
+      "changed_by_name": "PulseIQ Admin",
+      "changed_on": "2026-10-13T06:26:44.829763",
+      "changed_on_delta_humanized": "a second ago",
+      "charts": [
+        "Headcount trend",
+        "Headcount by department",
+        "Role mix",
+        "Joiners and leavers",
+        "Headcount by department over time",
+        "Current headcount",
+        "Active departments",
+        "Average tenure",
+        "Joiners (latest month)",
+        "Tenure bands"
+      ],
+      "created_by": {
+        "first_name": "PulseIQ",
+        "id": 1,
+        "last_name": "Admin"
+      },
+      "created_on_delta_humanized": "48 minutes ago",
+      "css": null,
+      "dashboard_title": "Headcount & Departments",
+      "id": 1,
+      "is_managed_externally": false,
+      "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}",
+      "owners": [
+        {
+          "first_name": "PulseIQ",
+          "id": 1,
+          "last_name": "Admin"
+        }
+      ],
+      "position_json": "{\"DASHBOARD_VERSION_KEY\": \"v2\", \"ROOT_ID\": {\"id\": \"ROOT_ID\", \"type\": \"ROOT\", \"children\": [\"GRID_ID\"], \"parents\": []}, \"GRID_ID\": {\"id\": \"GRID_ID\", \"type\": \"GRID\", \"children\": [\"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\", \"ROW-ea0ec8e2-5612-4e67-94b7-076a49953c5f\", \"ROW-bf0d2b77-55d2-4ace-8943-2b10391b3822\", \"ROW-f8a2fb58-0a29-473a-a64f-318964ae32f8\"], \"parents\": [\"ROOT_ID\"]}, \"CHART-11\": {\"id\": \"CHART-11\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\"], \"meta\": {\"chartId\": 11, \"height\": 50, \"sliceName\": \"Current headcount\", \"width\": 3}}, \"CHART-12\": {\"id\": \"CHART-12\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\"], \"meta\": {\"chartId\": 12, \"height\": 50, \"sliceName\": \"Active departments\", \"width\": 3}}, \"CHART-13\": {\"id\": \"CHART-13\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\"], \"meta\": {\"chartId\": 13, \"height\": 50, \"sliceName\": \"Average tenure\", \"width\": 3}}, \"CHART-14\": {\"id\": \"CHART-14\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\"], \"meta\": {\"chartId\": 14, \"height\": 50, \"sliceName\": \"Joiners (latest month)\", \"width\": 3}}, \"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\": {\"id\": \"ROW-8eff7df5-75f7-4089-aa79-f10bff267f53\", \"type\": \"ROW\", \"children\": [\"CHART-11\", \"CHART-12\", \"CHART-13\", \"CHART-14\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}, \"CHART-2\": {\"id\": \"CHART-2\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-ea0ec8e2-5612-4e67-94b7-076a49953c5f\"], \"meta\": {\"chartId\": 2, \"height\": 50, \"sliceName\": \"Headcount trend\", \"width\": 6}}, \"CHART-3\": {\"id\": \"CHART-3\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-ea0ec8e2-5612-4e67-94b7-076a49953c5f\"], \"meta\": {\"chartId\": 3, \"height\": 50, \"sliceName\": \"Headcount by department\", \"width\": 6}}, \"ROW-ea0ec8e2-5612-4e67-94b7-076a49953c5f\": {\"id\": \"ROW-ea0ec8e2-5612-4e67-94b7-076a49953c5f\", \"type\": \"ROW\", \"children\": [\"CHART-2\", \"CHART-3\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}, \"CHART-4\": {\"id\": \"CHART-4\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-bf0d2b77-55d2-4ace-8943-2b10391b3822\"], \"meta\": {\"chartId\": 4, \"height\": 50, \"sliceName\": \"Role mix\", \"width\": 6}}, \"CHART-5\": {\"id\": \"CHART-5\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-bf0d2b77-55d2-4ace-8943-2b10391b3822\"], \"meta\": {\"chartId\": 5, \"height\": 50, \"sliceName\": \"Joiners and leavers\", \"width\": 6}}, \"ROW-bf0d2b77-55d2-4ace-8943-2b10391b3822\": {\"id\": \"ROW-bf0d2b77-55d2-4ace-8943-2b10391b3822\", \"type\": \"ROW\", \"children\": [\"CHART-4\", \"CHART-5\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}, \"CHART-6\": {\"id\": \"CHART-6\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-f8a2fb58-0a29-473a-a64f-318964ae32f8\"], \"meta\": {\"chartId\": 6, \"height\": 50, \"sliceName\": \"Headcount by department over time\", \"width\": 6}}, \"CHART-15\": {\"id\": \"CHART-15\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-f8a2fb58-0a29-473a-a64f-318964ae32f8\"], \"meta\": {\"chartId\": 15, \"height\": 50, \"sliceName\": \"Tenure bands\", \"width\": 6}}, \"ROW-f8a2fb58-0a29-473a-a64f-318964ae32f8\": {\"id\": \"ROW-f8a2fb58-0a29-473a-a64f-318964ae32f8\", \"type\": \"ROW\", \"children\": [\"CHART-6\", \"CHART-15\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}}",
+      "published": true,
+      "roles": [],
+      "slug": "pulseiq-headcount-departments",
+      "tags": [],
+      "theme": null,
+      "thumbnail_url": "/api/v1/dashboard/1/thumbnail/6a0e547801933a1e2698f69d4fdb161eb81019fde8b160d9821be221ba62e407/",
+      "url": "/superset/dashboard/pulseiq-headcount-departments/",
+      "uuid": "926c8242-dbf4-4934-a4b7-ed825683ac71"
+    },
+    "charts": [
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "3 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 16,
+        "datasource_name_text": "public.v_headcount_snapshot",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=16",
+        "datasource_uuid": "d8cd7e89-a51b-4774-9c18-1db92d36fc63",
+        "description": "The September 2026 workbook snapshot has 441 active employees.",
+        "id": 11,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"current_headcount\"},\"aggregate\":\"MAX\",\"label\":\"current_headcount\",\"optionName\":\"metric_current_headcount\"}}",
+        "query_context": "{\"datasource\":{\"id\":16,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"current_headcount\"},\"aggregate\":\"MAX\",\"label\":\"current_headcount\",\"optionName\":\"metric_current_headcount\"}],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"current_headcount\"},\"aggregate\":\"MAX\",\"label\":\"current_headcount\",\"optionName\":\"metric_current_headcount\"}}}",
+        "slice_name": "Current headcount",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/11/thumbnail/315719883fd617bdc1524d334475c6ce0ba3298d3d7bf2ee0d103cc5efc38908/",
+        "url": "/explore/?slice_id=11",
+        "uuid": "e7214110-14d9-4dd5-98cc-74406815e341",
+        "viz_type": "big_number_total"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "3 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 16,
+        "datasource_name_text": "public.v_headcount_snapshot",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=16",
+        "datasource_uuid": "d8cd7e89-a51b-4774-9c18-1db92d36fc63",
+        "description": "All 11 departments have non-zero headcount in September 2026.",
+        "id": 12,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"active_departments\"},\"aggregate\":\"MAX\",\"label\":\"active_departments\",\"optionName\":\"metric_active_departments\"}}",
+        "query_context": "{\"datasource\":{\"id\":16,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"active_departments\"},\"aggregate\":\"MAX\",\"label\":\"active_departments\",\"optionName\":\"metric_active_departments\"}],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"active_departments\"},\"aggregate\":\"MAX\",\"label\":\"active_departments\",\"optionName\":\"metric_active_departments\"}}}",
+        "slice_name": "Active departments",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/12/thumbnail/8303a63184b27b9f34da759cc604279fea008eb00cb848becdde3d91aa759a9f/",
+        "url": "/explore/?slice_id=12",
+        "uuid": "ece394d5-94e4-44c3-abfc-828e1df7966a",
+        "viz_type": "big_number_total"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "3 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 16,
+        "datasource_name_text": "public.v_headcount_snapshot",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=16",
+        "datasource_uuid": "d8cd7e89-a51b-4774-9c18-1db92d36fc63",
+        "description": "Average tenure is 3.3 years for active employees at the 2026-09-30 cutoff.",
+        "id": 13,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"average_tenure_years\"},\"aggregate\":\"MAX\",\"label\":\"average_tenure_years\",\"optionName\":\"metric_average_tenure_years\"}}",
+        "query_context": "{\"datasource\":{\"id\":16,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"average_tenure_years\"},\"aggregate\":\"MAX\",\"label\":\"average_tenure_years\",\"optionName\":\"metric_average_tenure_years\"}],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"average_tenure_years\"},\"aggregate\":\"MAX\",\"label\":\"average_tenure_years\",\"optionName\":\"metric_average_tenure_years\"}}}",
+        "slice_name": "Average tenure",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/13/thumbnail/e153f5b5716dd18941c3d6e5df5b5f8d889e242381ade56dcf0697f282d5eeec/",
+        "url": "/explore/?slice_id=13",
+        "uuid": "86d4a344-ba5c-4763-924e-ae33a3939fd9",
+        "viz_type": "big_number_total"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "3 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 16,
+        "datasource_name_text": "public.v_headcount_snapshot",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=16",
+        "datasource_uuid": "d8cd7e89-a51b-4774-9c18-1db92d36fc63",
+        "description": "September 2026 recorded 17 hires; the source reports 3 exits.",
+        "id": 14,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"joiners_latest_month\"},\"aggregate\":\"MAX\",\"label\":\"joiners_latest_month\",\"optionName\":\"metric_joiners_latest_month\"}}",
+        "query_context": "{\"datasource\":{\"id\":16,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"joiners_latest_month\"},\"aggregate\":\"MAX\",\"label\":\"joiners_latest_month\",\"optionName\":\"metric_joiners_latest_month\"}],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"16__table\",\"viz_type\":\"big_number_total\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"time_range\":\"No filter\",\"metric\":{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"joiners_latest_month\"},\"aggregate\":\"MAX\",\"label\":\"joiners_latest_month\",\"optionName\":\"metric_joiners_latest_month\"}}}",
+        "slice_name": "Joiners (latest month)",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/14/thumbnail/f59a5b9640eb9f2e32762ea4979d149dabc30f0e41bd66fd914d63da4a1b4446/",
+        "url": "/explore/?slice_id=14",
+        "uuid": "3cb5d1fa-40ae-4c53-bfc6-b22cf4bb5a87",
+        "viz_type": "big_number_total"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "3 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 7,
+        "datasource_name_text": "public.v_headcount_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=7",
+        "datasource_uuid": "7dfdec95-a4ef-47b1-b307-2ee4b5a48139",
+        "description": "Headcount grew from 407 in April 2026 to 441 in September (+34).",
+        "id": 2,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"7__table\",\"viz_type\":\"echarts_timeseries_line\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"headcount\"},\"aggregate\":\"SUM\",\"label\":\"headcount\",\"optionName\":\"metric_headcount\"}]}",
+        "query_context": "{\"datasource\":{\"id\":7,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"headcount\"},\"aggregate\":\"SUM\",\"label\":\"headcount\",\"optionName\":\"metric_headcount\"}],\"groupby\":[\"month_date\"],\"is_timeseries\":true,\"granularity\":\"month_date\",\"granularity_sqla\":\"month_date\",\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"time_range\":\"No filter\",\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"7__table\",\"viz_type\":\"echarts_timeseries_line\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"headcount\"},\"aggregate\":\"SUM\",\"label\":\"headcount\",\"optionName\":\"metric_headcount\"}]}}",
+        "slice_name": "Headcount trend",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/2/thumbnail/ce2577eb161d840a52c3925cc0d21f8f91c8f1069dfe2cb0b0d81befa6361496/",
+        "url": "/explore/?slice_id=2",
+        "uuid": "0ae99762-67a1-4a78-9947-3bc7253e9433",
+        "viz_type": "echarts_timeseries_line"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "2 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 9,
+        "datasource_name_text": "public.v_headcount_latest_department",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=9",
+        "datasource_uuid": "feefd97f-4eeb-4eb1-91e5-9848cd67545f",
+        "description": "Engineering is largest (167); Customer Support has 59 and Data & AI 52.",
+        "id": 3,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"9__table\",\"viz_type\":\"echarts_timeseries_bar\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"groupby\":[\"department_name\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"headcount\"},\"aggregate\":\"SUM\",\"label\":\"headcount\",\"optionName\":\"metric_headcount\"}]}",
+        "query_context": "{\"datasource\":{\"id\":9,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"headcount\"},\"aggregate\":\"SUM\",\"label\":\"headcount\",\"optionName\":\"metric_headcount\"}],\"groupby\":[\"department_name\"],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"9__table\",\"viz_type\":\"echarts_timeseries_bar\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"groupby\":[\"department_name\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"headcount\"},\"aggregate\":\"SUM\",\"label\":\"headcount\",\"optionName\":\"metric_headcount\"}]}}",
+        "slice_name": "Headcount by department",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/3/thumbnail/668d5f7099011237a2b922b4ec4688b2e176f5e7d9f83d6985117000b250226f/",
+        "url": "/explore/?slice_id=3",
+        "uuid": "ede83c0b-f687-409b-8eee-a9756e890081",
+        "viz_type": "echarts_timeseries_bar"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "2 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 10,
+        "datasource_name_text": "public.v_role_mix",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=10",
+        "datasource_uuid": "1f9fbd11-ccfe-4c51-bae4-74b5e8974851",
+        "description": "Software Engineer and QA Engineer are tied at 29 active employees each.",
+        "id": 4,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"10__table\",\"viz_type\":\"pie\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"groupby\":[\"role_name\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"employee_count\"},\"aggregate\":\"SUM\",\"label\":\"employee_count\",\"optionName\":\"metric_employee_count\"}]}",
+        "query_context": "{\"datasource\":{\"id\":10,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"employee_count\"},\"aggregate\":\"SUM\",\"label\":\"employee_count\",\"optionName\":\"metric_employee_count\"}],\"groupby\":[\"role_name\"],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"10__table\",\"viz_type\":\"pie\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"groupby\":[\"role_name\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"employee_count\"},\"aggregate\":\"SUM\",\"label\":\"employee_count\",\"optionName\":\"metric_employee_count\"}]}}",
+        "slice_name": "Role mix",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/4/thumbnail/2f8b3102edd74ec1dee952a957e1510e16e22120fa2f0d7f980fbdf8940d174b/",
+        "url": "/explore/?slice_id=4",
+        "uuid": "75a80bf0-c54e-4923-9d2c-de07502c51ec",
+        "viz_type": "pie"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "2 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 11,
+        "datasource_name_text": "public.v_joiners_leavers_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=11",
+        "datasource_uuid": "1d481a8f-d472-435b-81fe-d606a6b43bb5",
+        "description": "September 2026 had 17 hires and 3 exits; transfers are excluded from hires.",
+        "id": 5,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"11__table\",\"viz_type\":\"echarts_timeseries_bar\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"joiners\"},\"aggregate\":\"SUM\",\"label\":\"joiners\",\"optionName\":\"metric_joiners\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"leavers\"},\"aggregate\":\"SUM\",\"label\":\"leavers\",\"optionName\":\"metric_leavers\"}]}",
+        "query_context": "{\"datasource\":{\"id\":11,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"joiners\"},\"aggregate\":\"SUM\",\"label\":\"joiners\",\"optionName\":\"metric_joiners\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"leavers\"},\"aggregate\":\"SUM\",\"label\":\"leavers\",\"optionName\":\"metric_leavers\"}],\"groupby\":[\"month_date\"],\"is_timeseries\":true,\"granularity\":\"month_date\",\"granularity_sqla\":\"month_date\",\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"time_range\":\"No filter\",\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"11__table\",\"viz_type\":\"echarts_timeseries_bar\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"joiners\"},\"aggregate\":\"SUM\",\"label\":\"joiners\",\"optionName\":\"metric_joiners\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"leavers\"},\"aggregate\":\"SUM\",\"label\":\"leavers\",\"optionName\":\"metric_leavers\"}]}}",
+        "slice_name": "Joiners and leavers",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/5/thumbnail/d64d4d4281cdb2117a973aaa03154d9d8f66aab59afc8ec1dc16dd61d98c59b2/",
+        "url": "/explore/?slice_id=5",
+        "uuid": "ff1c161f-36ba-4428-8614-c2de94533252",
+        "viz_type": "echarts_timeseries_bar"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "2 seconds ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 8,
+        "datasource_name_text": "public.v_headcount_department_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=8",
+        "datasource_uuid": "6e89e821-d581-4208-91b8-30641154468e",
+        "description": "Compare monthly department counts; the latest snapshot totals 441 active employees.",
+        "id": 6,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"8__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"department_name\",\"headcount\"]}",
+        "query_context": "{\"datasource\":{\"id\":8,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[\"month_date\",\"department_name\",\"headcount\"],\"metrics\":[],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"8__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"department_name\",\"headcount\"]}}",
+        "slice_name": "Headcount by department over time",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/6/thumbnail/a0dfd993c4679211c73ebca1d4d77479554655fc58cc04d27ce9ddae748c3361/",
+        "url": "/explore/?slice_id=6",
+        "uuid": "5069599a-6c96-4a89-b954-5cf7712a6d77",
+        "viz_type": "table"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "a second ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Headcount & Departments",
+            "id": 1,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-05983429-811d-451e-80a5-af1b80f6267d\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 8, \"column\": {\"name\": \"department_name\"}}, {\"datasetId\": 9, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-ad15d55b-02ee-4d87-823e-a110f3c5ccd0\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 7, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 8, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 11, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [11, 12, 13, 14, 2, 3, 4, 5, 6, 15], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 17,
+        "datasource_name_text": "public.v_tenure_bands",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=17",
+        "datasource_uuid": "cbd0c1d1-e1fd-4010-b408-7c5a8c9a64d8",
+        "description": "The largest active tenure band is 1-2 years (123 of 441 employees).",
+        "id": 15,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"17__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"tenure_band\",\"employee_count\"]}",
+        "query_context": "{\"datasource\":{\"id\":17,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[\"tenure_band\",\"employee_count\"],\"metrics\":[],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"17__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"tenure_band\",\"employee_count\"]}}",
+        "slice_name": "Tenure bands",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/15/thumbnail/36da7767dcc8b32adff5c20d69eadecd4943b3073258472e58a71e9e471912de/",
+        "url": "/explore/?slice_id=15",
+        "uuid": "14b4175c-9f6b-4638-a718-f99d5039d4ce",
+        "viz_type": "table"
+      }
+    ]
+  }
+}

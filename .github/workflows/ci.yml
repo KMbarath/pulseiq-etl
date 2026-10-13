@@ -50,7 +50,7 @@ jobs:
             --env REJECTED_DIR=data/rejected \
             --env LOG_DIR=logs \
             --env ETL_AS_OF_DATE=2026-10-12 \
-            --env FAIL_ON_REJECTS=true \
+            --env FAIL_ON_REJECTS=false \
             --volume "${{ github.workspace }}/data:/app/data" \
             --volume "${{ github.workspace }}/logs:/app/logs" \
             pulseiq-etl:ci
@@ -64,3 +64,45 @@ jobs:
             test -f "data/rejected/${table}_rejected.csv"
           done
           test -n "$(find logs -name 'run_*.json' -print -quit)"
+
+      - name: Verify strict mode fails with explicit reject report
+        shell: bash
+        run: |
+          set +e
+          docker run --rm \
+            --env RAW_DIR=data/raw \
+            --env CLEAN_DIR=data/clean \
+            --env REJECTED_DIR=data/rejected \
+            --env LOG_DIR=logs \
+            --env ETL_AS_OF_DATE=2026-10-12 \
+            --env FAIL_ON_REJECTS=true \
+            --volume "${{ github.workspace }}/data:/app/data" \
+            --volume "${{ github.workspace }}/logs:/app/logs" \
+            pulseiq-etl:ci
+          run_status=$?
+          set -e
+          test "$run_status" -ne 0
+          latest_report=$(ls -t logs/run_*.json | head -n1)
+          jq -e '.status == "failed_due_to_rejections" and .total_rows_rejected == 2' "$latest_report"
+
+      - name: Start PostgreSQL warehouse
+        run: docker compose up -d warehouse-db
+
+      - name: Load warehouse
+        run: docker compose run --rm warehouse-load
+
+      - name: Verify uploaded workbook sheet counts
+        env:
+          DATABASE_URL: postgresql://pulseiq:pulseiq_local_dev@localhost:5433/pulseiq_warehouse
+        run: python scripts/verify_workbook_counts.py
+
+      - name: Run warehouse integration checks
+        env:
+          DATABASE_URL: postgresql://pulseiq:pulseiq_local_dev@localhost:5433/pulseiq_warehouse
+        run: |
+          python -m pip install -r requirements.txt
+          python -m unittest tests.test_warehouse_integration -v
+
+      - name: Stop PostgreSQL warehouse
+        if: always()
+        run: docker compose down -v

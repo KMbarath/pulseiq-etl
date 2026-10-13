@@ -1,0 +1,292 @@
+{
+  "dashboard_title": "Attendance & Leave",
+  "slug": "pulseiq-attendance-leave",
+  "dashboard_id": 2,
+  "summary": "Monthly attendance trends, department comparisons, leave volume, and AI/ML anomaly flags.",
+  "charts": [
+    {
+      "id": 7,
+      "title": "Attendance rate trend",
+      "dataset": "v_attendance_monthly",
+      "viz_type": "echarts_timeseries_line",
+      "takeaway": "Rate bottomed at 92.89% in May 2026 and recovered to 95.19% by September.",
+      "rows_returned": 18,
+      "query_status": "success"
+    },
+    {
+      "id": 8,
+      "title": "Attendance by department",
+      "dataset": "v_attendance_department_monthly",
+      "viz_type": "table",
+      "takeaway": "In September, Finance & Accounts was 88.87% and Sales 97.54%; group sizes differ.",
+      "rows_returned": 198,
+      "query_status": "success"
+    },
+    {
+      "id": 9,
+      "title": "Leave days by type",
+      "dataset": "v_leave_monthly",
+      "viz_type": "table",
+      "takeaway": "Earned Leave leads at 2,336 approved days, followed by Casual Leave at 1,995.",
+      "rows_returned": 96,
+      "query_status": "success"
+    },
+    {
+      "id": 16,
+      "title": "Late-arrival rate",
+      "dataset": "v_attendance_monthly",
+      "viz_type": "table",
+      "takeaway": "Late arrivals peaked at 7.53% of present days in March 2026.",
+      "rows_returned": 18,
+      "query_status": "success"
+    },
+    {
+      "id": 10,
+      "title": "Attendance anomaly flags",
+      "dataset": "v_attendance_anomaly_monthly",
+      "viz_type": "echarts_timeseries_bar",
+      "takeaway": "221 monthly anomaly flags appear in the workbook sample; these are review signals, not daily incidents.",
+      "rows_returned": 18,
+      "query_status": "success"
+    }
+  ],
+  "filters": [
+    "department",
+    "date range"
+  ],
+  "superset_definition": {
+    "dashboard": {
+      "certification_details": null,
+      "certified_by": null,
+      "changed_by": {
+        "first_name": "PulseIQ",
+        "id": 1,
+        "last_name": "Admin"
+      },
+      "changed_by_name": "PulseIQ Admin",
+      "changed_on": "2026-10-13T06:26:46.158229",
+      "changed_on_delta_humanized": "now",
+      "charts": [
+        "Attendance rate trend",
+        "Attendance by department",
+        "Leave days by type",
+        "Attendance anomaly flags",
+        "Late-arrival rate"
+      ],
+      "created_by": {
+        "first_name": "PulseIQ",
+        "id": 1,
+        "last_name": "Admin"
+      },
+      "created_on_delta_humanized": "45 minutes ago",
+      "css": null,
+      "dashboard_title": "Attendance & Leave",
+      "id": 2,
+      "is_managed_externally": false,
+      "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-ff5a25cb-b061-45e8-9ee8-cf1e2a277fef\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 13, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-353edafc-99b3-41c6-976e-4d8274472bbe\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 12, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 13, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 14, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 15, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}",
+      "owners": [
+        {
+          "first_name": "PulseIQ",
+          "id": 1,
+          "last_name": "Admin"
+        }
+      ],
+      "position_json": "{\"DASHBOARD_VERSION_KEY\": \"v2\", \"ROOT_ID\": {\"id\": \"ROOT_ID\", \"type\": \"ROOT\", \"children\": [\"GRID_ID\"], \"parents\": []}, \"GRID_ID\": {\"id\": \"GRID_ID\", \"type\": \"GRID\", \"children\": [\"ROW-da9b767c-40b3-4b07-b463-fbb02c85c2b0\", \"ROW-cf18685e-e54e-46c3-9df3-11dc81676be5\", \"ROW-cd9389a6-0336-4a44-b37c-060d4b5426fa\"], \"parents\": [\"ROOT_ID\"]}, \"CHART-7\": {\"id\": \"CHART-7\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-da9b767c-40b3-4b07-b463-fbb02c85c2b0\"], \"meta\": {\"chartId\": 7, \"height\": 50, \"sliceName\": \"Attendance rate trend\", \"width\": 6}}, \"CHART-8\": {\"id\": \"CHART-8\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-da9b767c-40b3-4b07-b463-fbb02c85c2b0\"], \"meta\": {\"chartId\": 8, \"height\": 50, \"sliceName\": \"Attendance by department\", \"width\": 6}}, \"ROW-da9b767c-40b3-4b07-b463-fbb02c85c2b0\": {\"id\": \"ROW-da9b767c-40b3-4b07-b463-fbb02c85c2b0\", \"type\": \"ROW\", \"children\": [\"CHART-7\", \"CHART-8\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}, \"CHART-9\": {\"id\": \"CHART-9\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-cf18685e-e54e-46c3-9df3-11dc81676be5\"], \"meta\": {\"chartId\": 9, \"height\": 50, \"sliceName\": \"Leave days by type\", \"width\": 6}}, \"CHART-16\": {\"id\": \"CHART-16\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-cf18685e-e54e-46c3-9df3-11dc81676be5\"], \"meta\": {\"chartId\": 16, \"height\": 50, \"sliceName\": \"Late-arrival rate\", \"width\": 6}}, \"ROW-cf18685e-e54e-46c3-9df3-11dc81676be5\": {\"id\": \"ROW-cf18685e-e54e-46c3-9df3-11dc81676be5\", \"type\": \"ROW\", \"children\": [\"CHART-9\", \"CHART-16\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}, \"CHART-10\": {\"id\": \"CHART-10\", \"type\": \"CHART\", \"children\": [], \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-cd9389a6-0336-4a44-b37c-060d4b5426fa\"], \"meta\": {\"chartId\": 10, \"height\": 50, \"sliceName\": \"Attendance anomaly flags\", \"width\": 12}}, \"ROW-cd9389a6-0336-4a44-b37c-060d4b5426fa\": {\"id\": \"ROW-cd9389a6-0336-4a44-b37c-060d4b5426fa\", \"type\": \"ROW\", \"children\": [\"CHART-10\"], \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}}}",
+      "published": true,
+      "roles": [],
+      "slug": "pulseiq-attendance-leave",
+      "tags": [],
+      "theme": null,
+      "thumbnail_url": "/api/v1/dashboard/2/thumbnail/d36fa8df437c339eda6ed05358a5c4db2ed3315405ff289cf0dae5907f9a0831/",
+      "url": "/superset/dashboard/pulseiq-attendance-leave/",
+      "uuid": "2968b7b1-e3cf-4f58-9a22-d6a0413c852b"
+    },
+    "charts": [
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "a second ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Attendance & Leave",
+            "id": 2,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-ff5a25cb-b061-45e8-9ee8-cf1e2a277fef\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 13, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-353edafc-99b3-41c6-976e-4d8274472bbe\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 12, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 13, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 14, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 15, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 12,
+        "datasource_name_text": "public.v_attendance_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=12",
+        "datasource_uuid": "c951c26b-35ad-44d0-8fe3-c45ecc18cb7f",
+        "description": "Rate bottomed at 92.89% in May 2026 and recovered to 95.19% by September.",
+        "id": 7,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"12__table\",\"viz_type\":\"echarts_timeseries_line\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"attendance_rate\"},\"aggregate\":\"AVG\",\"label\":\"attendance_rate\",\"optionName\":\"metric_attendance_rate\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"rolling_3_month_rate\"},\"aggregate\":\"AVG\",\"label\":\"rolling_3_month_rate\",\"optionName\":\"metric_rolling_3_month_rate\"}]}",
+        "query_context": "{\"datasource\":{\"id\":12,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"attendance_rate\"},\"aggregate\":\"AVG\",\"label\":\"attendance_rate\",\"optionName\":\"metric_attendance_rate\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"rolling_3_month_rate\"},\"aggregate\":\"AVG\",\"label\":\"rolling_3_month_rate\",\"optionName\":\"metric_rolling_3_month_rate\"}],\"groupby\":[\"month_date\"],\"is_timeseries\":true,\"granularity\":\"month_date\",\"granularity_sqla\":\"month_date\",\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"time_range\":\"No filter\",\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"12__table\",\"viz_type\":\"echarts_timeseries_line\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"attendance_rate\"},\"aggregate\":\"AVG\",\"label\":\"attendance_rate\",\"optionName\":\"metric_attendance_rate\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"rolling_3_month_rate\"},\"aggregate\":\"AVG\",\"label\":\"rolling_3_month_rate\",\"optionName\":\"metric_rolling_3_month_rate\"}]}}",
+        "slice_name": "Attendance rate trend",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/7/thumbnail/c2af000b0d73ae0fc278c3de26ca52f7d5041eb44f3eb245135d7232263d8b22/",
+        "url": "/explore/?slice_id=7",
+        "uuid": "8c6bed76-9b15-4990-b19f-c6f9c5624a4e",
+        "viz_type": "echarts_timeseries_line"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "a second ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Attendance & Leave",
+            "id": 2,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-ff5a25cb-b061-45e8-9ee8-cf1e2a277fef\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 13, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-353edafc-99b3-41c6-976e-4d8274472bbe\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 12, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 13, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 14, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 15, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 13,
+        "datasource_name_text": "public.v_attendance_department_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=13",
+        "datasource_uuid": "87151b4a-495b-454b-a3d4-31d9199f1fdb",
+        "description": "In September, Finance & Accounts was 88.87% and Sales 97.54%; group sizes differ.",
+        "id": 8,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"13__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"department_name\",\"scheduled_days\",\"present_days\",\"attendance_rate\"]}",
+        "query_context": "{\"datasource\":{\"id\":13,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[\"month_date\",\"department_name\",\"scheduled_days\",\"present_days\",\"attendance_rate\"],\"metrics\":[],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"13__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"department_name\",\"scheduled_days\",\"present_days\",\"attendance_rate\"]}}",
+        "slice_name": "Attendance by department",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/8/thumbnail/0366a304b1d1033fa4f367deaf4ea27f0741ec0ddc2db9a68092ed40cd3f4d53/",
+        "url": "/explore/?slice_id=8",
+        "uuid": "1bc873ea-f1cd-4597-9000-4e4d7568021e",
+        "viz_type": "table"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "a second ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Attendance & Leave",
+            "id": 2,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-ff5a25cb-b061-45e8-9ee8-cf1e2a277fef\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 13, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-353edafc-99b3-41c6-976e-4d8274472bbe\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 12, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 13, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 14, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 15, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 14,
+        "datasource_name_text": "public.v_leave_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=14",
+        "datasource_uuid": "62202bee-a253-4a46-b6de-16c889625b5e",
+        "description": "Earned Leave leads at 2,336 approved days, followed by Casual Leave at 1,995.",
+        "id": 9,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"14__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"leave_type\",\"leave_days\",\"leave_requests\"]}",
+        "query_context": "{\"datasource\":{\"id\":14,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[\"month_date\",\"leave_type\",\"leave_days\",\"leave_requests\"],\"metrics\":[],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"14__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"leave_type\",\"leave_days\",\"leave_requests\"]}}",
+        "slice_name": "Leave days by type",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/9/thumbnail/99070c0a66c8d22c0f82ce67b8a77790b9fff109883ffa3243fd403667fb0c92/",
+        "url": "/explore/?slice_id=9",
+        "uuid": "57f41093-930c-4467-899a-35689a35fd2e",
+        "viz_type": "table"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "a second ago",
+        "dashboards": [
+          {
+            "dashboard_title": "Attendance & Leave",
+            "id": 2,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-ff5a25cb-b061-45e8-9ee8-cf1e2a277fef\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 13, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-353edafc-99b3-41c6-976e-4d8274472bbe\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 12, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 13, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 14, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 15, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 12,
+        "datasource_name_text": "public.v_attendance_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=12",
+        "datasource_uuid": "c951c26b-35ad-44d0-8fe3-c45ecc18cb7f",
+        "description": "Late arrivals peaked at 7.53% of present days in March 2026.",
+        "id": 16,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"12__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"late_arrivals\",\"late_arrival_rate\"]}",
+        "query_context": "{\"datasource\":{\"id\":12,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[\"month_date\",\"late_arrivals\",\"late_arrival_rate\"],\"metrics\":[],\"groupby\":[],\"granularity\":null,\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"12__table\",\"viz_type\":\"table\",\"query_mode\":\"raw\",\"row_limit\":10000,\"adhoc_filters\":[],\"all_columns\":[\"month_date\",\"late_arrivals\",\"late_arrival_rate\"]}}",
+        "slice_name": "Late-arrival rate",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/16/thumbnail/46ec48f4311e2a8e63959f222cf93b65801b3d72122de94e0c8853a4fb12d426/",
+        "url": "/explore/?slice_id=16",
+        "uuid": "56fff6dd-b851-4de2-afc9-8389f3445de8",
+        "viz_type": "table"
+      },
+      {
+        "cache_timeout": null,
+        "certification_details": null,
+        "certified_by": null,
+        "changed_on_delta_humanized": "now",
+        "dashboards": [
+          {
+            "dashboard_title": "Attendance & Leave",
+            "id": 2,
+            "json_metadata": "{\"show_native_filters\": true, \"native_filter_configuration\": [{\"id\": \"NATIVE_FILTER-ff5a25cb-b061-45e8-9ee8-cf1e2a277fef\", \"name\": \"Department\", \"filterType\": \"filter_select\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 13, \"column\": {\"name\": \"department_name\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"controlValues\": {\"enableEmptyFilter\": false, \"defaultToFirstItem\": false, \"multiSelect\": true, \"searchAllOptions\": true}, \"defaultDataMask\": {\"filterState\": {\"value\": null, \"label\": null}, \"extraFormData\": {}}}, {\"id\": \"NATIVE_FILTER-353edafc-99b3-41c6-976e-4d8274472bbe\", \"name\": \"Date range\", \"filterType\": \"filter_time\", \"type\": \"NATIVE_FILTER\", \"targets\": [{\"datasetId\": 12, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 13, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 14, \"column\": {\"name\": \"month_date\"}}, {\"datasetId\": 15, \"column\": {\"name\": \"month_date\"}}], \"chartsInScope\": [7, 8, 9, 16, 10], \"tabsInScope\": [], \"cascadeParentIds\": [], \"defaultDataMask\": {\"filterState\": {\"value\": \"No filter\", \"label\": \"No filter\"}, \"extraFormData\": {\"time_range\": \"No filter\"}}}], \"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"color_scheme\": \"\", \"label_colors\": {}, \"shared_label_colors\": [], \"map_label_colors\": {}, \"color_scheme_domain\": [], \"cross_filters_enabled\": true}"
+          }
+        ],
+        "datasource_id": 15,
+        "datasource_name_text": "public.v_attendance_anomaly_monthly",
+        "datasource_type": "table",
+        "datasource_url": "/explore/?datasource_type=table&datasource_id=15",
+        "datasource_uuid": "fa62259b-e73c-4fb9-90de-970c80249612",
+        "description": "221 monthly anomaly flags appear in the workbook sample; these are review signals, not daily incidents.",
+        "id": 10,
+        "is_managed_externally": false,
+        "owners": [
+          {
+            "email": "admin@pulseiq.local",
+            "first_name": "PulseIQ",
+            "id": 1,
+            "last_name": "Admin"
+          }
+        ],
+        "params": "{\"datasource\":\"15__table\",\"viz_type\":\"echarts_timeseries_bar\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"flagged_records\"},\"aggregate\":\"SUM\",\"label\":\"flagged_records\",\"optionName\":\"metric_flagged_records\"}]}",
+        "query_context": "{\"datasource\":{\"id\":15,\"type\":\"table\"},\"force\":true,\"queries\":[{\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"flagged_records\"},\"aggregate\":\"SUM\",\"label\":\"flagged_records\",\"optionName\":\"metric_flagged_records\"}],\"groupby\":[\"month_date\"],\"is_timeseries\":true,\"granularity\":\"month_date\",\"granularity_sqla\":\"month_date\",\"filters\":[],\"orderby\":[],\"extras\":{\"time_grain_sqla\":\"P1M\",\"having\":\"\",\"where\":\"\"},\"time_range\":\"No filter\",\"row_limit\":10000,\"order_desc\":true,\"annotation_layers\":[],\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\",\"form_data\":{\"datasource\":\"15__table\",\"viz_type\":\"echarts_timeseries_bar\",\"query_mode\":\"aggregate\",\"row_limit\":10000,\"adhoc_filters\":[],\"x_axis\":\"month_date\",\"granularity_sqla\":\"month_date\",\"time_grain_sqla\":\"P1M\",\"time_range\":\"No filter\",\"groupby\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"column_name\":\"flagged_records\"},\"aggregate\":\"SUM\",\"label\":\"flagged_records\",\"optionName\":\"metric_flagged_records\"}]}}",
+        "slice_name": "Attendance anomaly flags",
+        "tags": [],
+        "thumbnail_url": "/api/v1/chart/10/thumbnail/02fae618aa45611738a0741ea8dab402b07c24a8a0317ee2e1b212756c593d6b/",
+        "url": "/explore/?slice_id=10",
+        "uuid": "88fad120-6c05-4c2a-a10f-a66d8a196751",
+        "viz_type": "echarts_timeseries_bar"
+      }
+    ]
+  }
+}

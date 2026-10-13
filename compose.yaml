@@ -1,4 +1,3 @@
-
 services:
   etl:
     build:
@@ -6,8 +5,72 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
+    environment:
+      FAIL_ON_REJECTS: ${FAIL_ON_REJECTS:-true}
     volumes:
       - ./data:/app/data
       - ./logs:/app/logs
     command: ["python", "-m", "src.pipeline"]
     restart: "no"
+
+  warehouse-db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: pulseiq_warehouse
+      POSTGRES_USER: pulseiq
+      POSTGRES_PASSWORD: ${WAREHOUSE_DB_PASSWORD:-pulseiq_local_dev}
+    ports:
+      - "5433:5432"
+    volumes:
+      - warehouse_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pulseiq -d pulseiq_warehouse"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  warehouse-load:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://pulseiq:${WAREHOUSE_DB_PASSWORD:-pulseiq_local_dev}@warehouse-db:5432/pulseiq_warehouse
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./sql:/app/sql
+      - ./scripts:/app/scripts:ro
+      - ./src:/app/src
+    command: ["/bin/sh", "-c", "python -m src.warehouse_loader && python -m src.full_dataset_loader && python -m src.superset_views"]
+    depends_on:
+      warehouse-db:
+        condition: service_healthy
+    restart: "no"
+
+  superset:
+    build:
+      context: ./superset
+      dockerfile: Dockerfile
+    image: pulseiq-superset:local
+    environment:
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:-pulseiq_change_me}
+      SUPERSET_LOAD_EXAMPLES: "no"
+    ports:
+      - "8088:8088"
+    volumes:
+      - superset_home:/app/superset_home
+    depends_on:
+      warehouse-db:
+        condition: service_healthy
+    command: >-
+      /bin/sh -c "superset db upgrade && superset fab create-admin
+      --username admin --firstname PulseIQ --lastname Admin
+      --email admin@pulseiq.local --password admin || true;
+      superset init; gunicorn -w 2 -b 0.0.0.0:8088 'superset.app:create_app()'"
+    restart: unless-stopped
+
+volumes:
+  warehouse_data:
+  superset_home:

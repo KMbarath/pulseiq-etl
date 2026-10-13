@@ -1,0 +1,63 @@
+erDiagram
+    dim_employee {
+        bigint employee_key PK
+        text employee_id
+        date valid_from
+        date valid_to
+        boolean is_current
+        bigint department_key FK
+        bigint role_key FK
+    }
+    dim_department {
+        bigint department_key PK
+        text department_name UK
+    }
+    dim_role {
+        bigint role_key PK
+        text role_name UK
+    }
+    dim_date {
+        int date_key PK
+        date full_date UK
+    }
+    dim_leave_type {
+        bigint leave_type_key PK
+        text leave_type_name UK
+    }
+    fact_attendance {
+        bigint attendance_key PK
+        bigint employee_key FK
+        date attendance_date FK
+        text attendance_status
+    }
+    fact_payroll {
+        bigint payroll_key PK
+        bigint employee_key FK
+        date pay_month
+        numeric gross_pay
+        numeric net_pay
+    }
+    fact_leave {
+        bigint leave_key PK
+        bigint employee_key FK
+        bigint leave_type_key FK
+        date start_date FK
+        date end_date FK
+    }
+    fact_headcount_monthly {
+        bigint headcount_key PK
+        bigint employee_key FK
+        date month_date FK
+        smallint headcount_value
+    }
+    dim_department ||--o{ dim_employee : groups
+    dim_role ||--o{ dim_employee : classifies
+    dim_employee ||--o{ fact_attendance : records
+    dim_employee ||--o{ fact_payroll : pays
+    dim_employee ||--o{ fact_leave : takes
+    dim_employee ||--o{ fact_headcount_monthly : snapshots
+    dim_date ||--o{ fact_attendance : dates
+    dim_date ||--o{ fact_payroll : dates
+    dim_date ||--o{ fact_leave : dates
+    dim_date ||--o{ fact_headcount_monthly : dates
+    dim_leave_type ||--o{ fact_leave : categorizes
