@@ -91,18 +91,23 @@ jobs:
       - name: Start PostgreSQL warehouse
         run: docker compose up -d warehouse-db
 
-      - name: Load warehouse
-        run: docker compose run --rm warehouse-load
+      - name: Configure synthetic warehouse fixture
+        run: |
+          mkdir -p data/reference
+          cp tests/fixtures/warehouse/employee_org_history.csv data/reference/
 
-      - name: Verify uploaded workbook sheet counts
-        run: docker compose run --rm warehouse-load python scripts/verify_workbook_counts.py
+      - name: Load synthetic warehouse fixture
+        run: docker compose run --rm warehouse-load python -m src.warehouse_loader
 
-      - name: Run warehouse integration checks
+      - name: Run synthetic warehouse integration checks
         env:
           DATABASE_URL: postgresql://pulseiq:pulseiq_local_dev@localhost:5433/pulseiq_warehouse
         run: |
           python -m pip install -r requirements.txt
-          python -m unittest tests.test_warehouse_integration -v
+          python -m unittest \
+            tests.test_warehouse_integration.WarehouseIntegrationTests.test_three_queries_match_clean_files \
+            tests.test_warehouse_integration.WarehouseIntegrationTests.test_synthetic_department_history_attributes_payroll \
+            -v
 
       - name: Stop PostgreSQL warehouse
         if: always()

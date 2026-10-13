@@ -131,6 +131,30 @@ class WarehouseIntegrationTests(unittest.TestCase):
         self.assertGreaterEqual(len(rows), 1)
         self.assertEqual(rows[0][0], "D08")
 
+    def test_synthetic_department_history_attributes_payroll(self):
+        history = self.query(
+            """SELECT department_name, valid_from, valid_to
+               FROM dim_employee e
+               JOIN dim_department d USING (department_key)
+               WHERE employee_id = 'SYN002'
+               ORDER BY valid_from"""
+        )
+        self.assertEqual(len(history), 2)
+        self.assertEqual(history[0][0], "D01")
+        self.assertEqual(history[0][2].isoformat(), "2025-12-31")
+        self.assertEqual(history[-1][0], "D08")
+
+        rows = self.query(
+            """SELECT d.department_name, f.pay_month
+               FROM fact_payroll f
+               JOIN dim_employee e USING (employee_key)
+               JOIN dim_department d USING (department_key)
+               WHERE f.source_employee_id = 'SYN002'
+               ORDER BY f.pay_month"""
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0][0], "D08")
+
     def test_uploaded_workbook_dashboard_views_match_source_facts(self):
         expected_headcount = self.query(
             """SELECT SUM(headcount_end::numeric)::integer
